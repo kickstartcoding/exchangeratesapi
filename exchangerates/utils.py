@@ -11,6 +11,14 @@ from sanic.response import BaseHTTPResponse
 class Gino(GinoBase):
     async def set_bind(self, bind, loop=None, **kwargs):
         kwargs.setdefault("strategy", "sanic")
+        import ssl
+
+        ctx = ssl.create_default_context(cafile="")
+        ctx.check_hostname = False
+        ctx.verify_mode = ssl.CERT_NONE
+        kwargs.setdefault('ssl', ctx)
+        #await db.set_bind(DATABASE_URL, echo=True, ssl=ctx)
+
         return await super().set_bind(
             bind,
             loop=loop,

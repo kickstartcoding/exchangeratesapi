@@ -7,7 +7,7 @@ from inspect import isawaitable
 from gino.ext.sanic import Gino as GinoBase
 from sanic.response import BaseHTTPResponse
 
-
+#Gino = GinoBase
 class Gino(GinoBase):
     async def set_bind(self, bind, loop=None, **kwargs):
         kwargs.setdefault("strategy", "sanic")
@@ -58,10 +58,14 @@ def cors(origin=None):
 
 
 def parse_database_url(url):
+    if isinstance(url, bytes):
+        url = url.decode('utf8')
     url = urlparse.urlparse(url)
 
     # Split query strings from path.
     path = url.path[1:]
+    if isinstance(path, bytes):
+        path = path.decode('utf8')
     if "?" in path and not url.query:
         path, query = path.split("?", 2)
     else:

@@ -10,10 +10,10 @@ from xml.etree import ElementTree
 from apscheduler.schedulers.asyncio import AsyncIOScheduler
 from gino.dialects.asyncpg import JSONB
 from raven.contrib.sanic import Sentry
+from exchangerates.utils import Gino, cors, parse_database_url
 from sanic import Sanic
 from sanic.response import file, html, json, redirect
 
-from exchangerates.utils import Gino, cors, parse_database_url
 
 HISTORIC_RATES_URL = "https://www.ecb.europa.eu/stats/eurofxref/eurofxref-hist.xml"
 LAST_90_DAYS_RATES_URL = (
@@ -21,15 +21,17 @@ LAST_90_DAYS_RATES_URL = (
 )
 
 
-app = Sanic()
+app = Sanic(name='xchangeapi')
 app.config.update(
     parse_database_url(
-        url=getenv("DATABASE_URL", "postgresql://localhost/exchangerates")
+        url=getenv("DATABASE_URL")
     )
 )
 
 # Database
-db = Gino(app)
+app.config.DB_USE_CONNECTION_FOR_REQUEST = False
+db = Gino()
+db.init_app(app)
 
 # Sentry
 sentry = Sentry(app)
@@ -69,6 +71,8 @@ async def update_rates(historic=False):
 
 @app.listener("before_server_start")
 async def initialize_scheduler(app, loop):
+    await db.set_bind(getenv("DATABASE_URL")) # hack: forced to rebind here
+
     # Check that tables exist
     await db.gino.create_all()
 
@@ -250,9 +254,9 @@ async def exchange_rates(request):
 
 
 # api.ExchangeratesAPI.io
-@app.route("/", methods=["GET"], host="api.exchangeratesapi.io")
-async def index(request):
-    return json({"details": "https://exchangeratesapi.io"}, escape_forward_slashes=False)
+#@app.route("/", methods=["GET"], host="api.exchangeratesapi.io")
+#async def index(request):
+#    return json({"details": "https://exchangeratesapi.io"}, escape_forward_slashes=False)
 
 
 # Website

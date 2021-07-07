@@ -4,9 +4,6 @@
             "sha256": "54ef716f462a7c8754e9c3f582031f12a97eebb49cca3f4ddfc585c33cd14579"
         },
         "pipfile-spec": 6,
-        "requires": {
-            "python_version": "3.6"
-        },
         "sources": [
             {
                 "name": "pypi",
@@ -20,7 +17,6 @@
             "hashes": [
                 "sha256:77a8fd70e774de2778357503a5b5a702a405ff458b41d4583677732cfab3b25d"
             ],
-            "markers": "python_version < '3.7'",
             "version": "==0.1.2"
         },
         "aiofiles": {

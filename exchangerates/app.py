@@ -10,7 +10,7 @@ from xml.etree import ElementTree
 from apscheduler.schedulers.asyncio import AsyncIOScheduler
 from gino.dialects.asyncpg import JSONB
 from raven.contrib.sanic import Sentry
-from exchangerates.utils import Gino, cors, parse_database_url
+from exchangerates.utils import Gino, cors, parse_database_url, patch_request
 from sanic import Sanic
 from sanic.response import file, html, json, redirect
 
@@ -29,7 +29,7 @@ app.config.update(
 )
 
 # Database
-app.config.DB_USE_CONNECTION_FOR_REQUEST = False
+#app.config.DB_USE_CONNECTION_FOR_REQUEST = False
 db = Gino()
 db.init_app(app)
 
@@ -137,6 +137,9 @@ async def exchange_rates(request, date=None):
 
     # Base
     base = "EUR"
+
+    request = patch_request(request) # HACK: Sanic 0.8 -> 2020 upgrade
+
     if "base" in request.raw_args and request.raw_args["base"] != "EUR":
         base = request.raw_args["base"]
 
@@ -180,6 +183,7 @@ async def exchange_rates(request, date=None):
 @app.route("/api/history", methods=["GET", "HEAD"])
 @cors()
 async def exchange_rates(request):
+    request = patch_request(request) # HACK: Sanic 0.8 -> 2020 upgrade
     if request.method == "HEAD":
         return json("")
 

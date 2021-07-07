@@ -7,6 +7,18 @@ from inspect import isawaitable
 from gino.ext.sanic import Gino as GinoBase
 from sanic.response import BaseHTTPResponse
 
+def patch_request(request):
+    # Patches 2020 Sanic Request object to resemble 2018 Sanic
+    class RequestCompat:
+        def __init__(self, old_request):
+            self.raw_args = old_request.query_args
+            self.args = old_request.args
+            self.method = old_request.method
+    if not hasattr(request, 'raw_args'):
+        return RequestCompat(request)
+    else:
+        return request
+
 #Gino = GinoBase
 class Gino(GinoBase):
     async def set_bind(self, bind, loop=None, **kwargs):

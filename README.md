@@ -8,34 +8,34 @@ So, to get it running on locally and/or Heroku, here are the steps:
 
 2. Create new shell locally:
 
-	pipenv shell
-	pipenv install --skip-lock
-	pip install gino==0.8.7 # Install older version of Gino ORM
+        pipenv shell
+        pipenv install --skip-lock
+        pip install gino==0.8.7 # Install older version of Gino ORM
 
 3. Create a new Heroku app:
 
 
-	heroku create
-	heroku addons:create heroku-postgresql:hobby-dev
-	# Add the remote DB url to a local .env file:
-	heroku config:get DATABASE_URL -s  >> .env
+        heroku create
+        heroku addons:create heroku-postgresql:hobby-dev
+        # Add the remote DB url to a local .env file:
+        heroku config:get DATABASE_URL -s  >> .env
 
 
 4. Test locally:
 
 
-	heroku local
+        heroku local
 
-	curl http://localhost:5000/2020-03-05
-	# or
-	wget -qO - http://localhost:5000/2020-03-05
+        curl http://localhost:5000/2020-03-05
+        # or
+        wget -qO - http://localhost:5000/2020-03-05
 
-	# output:
-	# {"base":"EUR","date":"2020-03-03","rates":.....
+        # output:
+        # {"base":"EUR","date":"2020-03-03","rates":.....
 
 
 5. Launch to heroku:
 
-	git push heroku master
+        git push heroku master
 
 

@@ -9,8 +9,10 @@ So, to get it running on locally and/or Heroku, here are the steps:
 2. Create new shell locally:
 
         pipenv shell
-        pipenv install --skip-lock
-        pip install gino==0.8.7 # Install older version of Gino ORM
+        pipenv install
+        # If troubleshooting, try also:
+        #pipenv install --skip-lock
+        #pip install gino==0.8.7 # Ensure older version of Gino ORM is installed
 
 3. Create a new Heroku app:
 

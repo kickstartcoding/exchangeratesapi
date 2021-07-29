@@ -24,7 +24,9 @@ So, to get it running on locally and/or Heroku, here are the steps:
 
 
         heroku local
+        # (will likely spit out a lot of messages)
 
+        # Test in a new terminal, or in your browser:
         curl http://localhost:5000/2020-03-05
         # or
         wget -qO - http://localhost:5000/2020-03-05

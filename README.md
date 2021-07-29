@@ -19,14 +19,19 @@ So, to get it running on locally and/or Heroku, here are the steps:
         # Add the remote DB url to a local .env file:
         heroku config:get DATABASE_URL -s  > .env
 
+4. Ensure the `.env` file got created correctly:
 
-4. Test locally:
+
+        cat .env
+        # Should see something quite long, starting with: DATABASE_URL=
+
+
+
+5. Test locally:
 
 
         heroku local
-        # (will likely spit out a lot of messages)
 
-        # Test in a new terminal, or in your browser:
         curl http://localhost:5000/2020-03-05
         # or
         wget -qO - http://localhost:5000/2020-03-05
@@ -35,7 +40,7 @@ So, to get it running on locally and/or Heroku, here are the steps:
         # {"base":"EUR","date":"2020-03-03","rates":.....
 
 
-5. Launch to heroku:
+6. Launch to heroku:
 
         git push heroku master
 

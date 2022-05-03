@@ -5,13 +5,17 @@ name = "pypi"
 
 [packages]
 SQLAlchemy = '==1.3.23'
-#sanic = "==21.6.0"
-sanic = "==21.12.1"
+sanic = "==21.6.0"
+#sanic = "==21.12.1"
 uvloop = "==0.15.2"
 ujson = "==4.0.2"
+
 requests = "==2.25.1"
+
 gunicorn = "==20.1.0"
+
 gino = "==0.8.7"
+
 apscheduler = "==3.7.0"
 raven = {extras = ["sanic"]}
 blinker = "==1.4"

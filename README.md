@@ -4,7 +4,8 @@ New, Updated Exchange Rates API
 So, to get it running on locally and/or Heroku, here are the steps:
 
 
-1. Clone our fork that has a few patches for version compatibility (Py 3.6, 3.8 and Sanic 2020+) <https://github.com/kickstartcoding/exchangeratesapi/>
+1. Clone our fork that has a few patches for version compatibility (Py 3.6, 3.8
+and Sanic 2020+) <https://github.com/kickstartcoding/exchangeratesapi/>
 
 2. Create new shell locally:
 

@@ -24,7 +24,7 @@
     <div id="hero">
       <div class="container">
         <nav class="navbar navbar-expand-lg navbar-light pt-5">
-          <a class="navbar-brand" href="https://exchangeratesapi.io">
+          <a class="navbar-brand" href="https://kc-exchangeratesapi.herokuapp.com/">
             <img src="/static/logo.svg" alt="Exchange rates API" />
           </a>
           <ul class="navbar-nav ml-auto">
@@ -34,7 +34,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a href="https://github.com/madisvain/exchangeratesapi" class="nav-link">
+              <a href="https://github.com/kickstartcoding/exchangeratesapi" class="nav-link">
                 Source
               </a>
             </li>
@@ -62,7 +62,7 @@
         <div id="shell" class="col-6 offset-3">
           <pre>
             <code class="http px-5">
-GET https://api.exchangeratesapi.io/latest HTTP/1.1
+GET https://kc-exchangeratesapi.herokuapp.com/latest HTTP/1.1
 
 {
   "base": "EUR",
@@ -131,7 +131,7 @@ GET https://api.exchangeratesapi.io/latest HTTP/1.1
           </p>
           <pre>
             <code class="http px-5 rounded-corners">
-GET https://api.exchangeratesapi.io/latest HTTP/1.1
+GET https://kc-exchangeratesapi.herokuapp.com/latest HTTP/1.1
             </code>
           </pre>
 
@@ -140,7 +140,7 @@ GET https://api.exchangeratesapi.io/latest HTTP/1.1
           </p>
           <pre>
             <code class="http px-5 rounded-corners">
-GET https://api.exchangeratesapi.io/2010-01-12 HTTP/1.1
+GET https://kc-exchangeratesapi.herokuapp.com/2010-01-12 HTTP/1.1
             </code>
           </pre>
 
@@ -150,7 +150,7 @@ GET https://api.exchangeratesapi.io/2010-01-12 HTTP/1.1
           </p>
           <pre>
             <code class="http px-5 rounded-corners">
-GET https://api.exchangeratesapi.io/latest?base=USD HTTP/1.1
+GET https://kc-exchangeratesapi.herokuapp.com/latest?base=USD HTTP/1.1
             </code>
           </pre>
 
@@ -159,7 +159,7 @@ GET https://api.exchangeratesapi.io/latest?base=USD HTTP/1.1
           </p>
           <pre>
             <code class="http px-5 rounded-corners">
-GET https://api.exchangeratesapi.io/latest?symbols=USD,GBP HTTP/1.1
+GET https://kc-exchangeratesapi.herokuapp.com/latest?symbols=USD,GBP HTTP/1.1
             </code>
           </pre>
 
@@ -179,13 +179,10 @@ GET https://api.exchangeratesapi.io/latest?symbols=USD,GBP HTTP/1.1
           <div class="col my-3 text-center">
             <ul class="list-unstyled mx-auto">
               <li>
-                <a class="github-button" href="https://github.com/madisvain/exchangeratesapi" data-size="large" data-show-count="true" aria-label="Star madisvain/exchangeratesapi on GitHub">Star</a>
-                <a class="github-button" href="https://github.com/madisvain/exchangeratesapi/fork" data-icon="octicon-repo-forked" data-size="large" data-show-count="true" aria-label="Fork madisvain/exchangeratesapi on GitHub">Fork</a>
-              </li>
               <li>
-                Made with <span style="color: #e25555;">&hearts;</span> for coding by <a href="https://github.com/madisvain">Madis Väin</a>
+                Original API made by <a href="https://github.com/madisvain">Madis Väin</a> and under the MIT license
                 <br/>
-                <small>Estonia, Tallinn</small>
+                This "remix" is by <a href="https://github.com/kickstartcoding/">Kickstart Coding</a> 
               </li>
             </ul>
           </div>
